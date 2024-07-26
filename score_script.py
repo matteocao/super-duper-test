@@ -1,6 +1,6 @@
 import json
 import os
-from .sensors import Sensors, FullExample
+from sensors import Sensors, FullExample
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +19,8 @@ def find_file(directory_path, file_name):
 file_name_example = "1f876c06" + ".json"
 print(file_name_example)
 print(find_file(directory_path=directory_path, file_name=file_name_example))
+
+# TODO: convert kaggle format to single filess
 
 # start sensors
 sensor_train = Sensors(os.path.join("data", "training"))
@@ -49,5 +51,4 @@ def score(file_name):
     return attempted, score, score / attempted
 
 
-print(score(file_name1))
-print(score(file_name2))
+print(score(file_name))
