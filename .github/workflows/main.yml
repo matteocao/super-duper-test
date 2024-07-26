@@ -7,18 +7,21 @@ on:
 jobs:
   run-docker:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      
+
     - name: Read Docker image name
       id: read_docker_image
       run: echo "IMAGE_NAME=$(cat docker_image.txt)" >> $GITHUB_ENV
-      
+
     - name: Pull Docker image
       run: docker pull ${{ env.IMAGE_NAME }}
-      
+
     - name: Run Docker container
       run: |
         docker run -v ${{ github.workspace }}/data:/data ${{ env.IMAGE_NAME }} || exit 1
+
+    - name: Run Evaluation script
+      run: python3 score_script.py
