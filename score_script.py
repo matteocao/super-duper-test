@@ -6,8 +6,8 @@ from .sensors import Sensors, FullExample
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Build the path to the JSON file
-file_name1 = os.path.join(script_dir, "submission_sumayyeh_only.json")
-file_name2 = os.path.join(script_dir, "submission_sumayyeh_with_us.json")
+file_name = "submission.json"
+directory_path = "data"
 
 
 def find_file(directory_path, file_name):
@@ -15,16 +15,10 @@ def find_file(directory_path, file_name):
     full_path = os.path.join(os.getcwd(), directory_path, file_name)
     return os.path.isfile(full_path)
 
-
-directory_path_train = "data/training"
-directory_path_eval = "data/evaluation"
-directory_path_test = "test_data/evaluation"
-directories = [directory_path_train, directory_path_eval, directory_path_test]
-
 # test find_file
 file_name_example = "1f876c06" + ".json"
 print(file_name_example)
-print(find_file(directory_path=directory_path_eval, file_name=file_name_example))
+print(find_file(directory_path=directory_path, file_name=file_name_example))
 
 # start sensors
 sensor_train = Sensors(os.path.join("data", "training"))
