@@ -10,7 +10,11 @@ The Abstraction and Reasoning Corpus for Artificial General Intelligence (ARC-AG
 
 Your work could contribute to new AI problem-solving applicable across industries. Vastly improved AGI will likely reshape human-machine interactions.
 
-## How to participate
+## The challenge
+
+The challenge data can bve found is this repo [/data](https://github.com/matteocao/super-duper-test/tree/main/data) folder. The best way to get familiarised with the data and challenge is to look at [this website](https://arc-editor.lab42.global/playground). Simply put, each of the tasks consists of a few demo examples explaining the rule to go from input to output - they are needed by the solver to be able to infer the rule to go from input to output - and a test task, where one validates whether the rule was inferred correctly.
+
+### How to participate
 
 In order to participate to the Research team candidate challenge, in a separated repo, prepare your solution code and ship it in a docker. The docker shall be put on [dockerhub](https://hub.docker.com/) - the account on dockerhub for personal use is free - and shall be public. This will make the `docker pull` command work on your image as well. Once you have your docker prepared, you can make a PR to this repo.
 
@@ -24,7 +28,7 @@ For more details on what are the commands that run your docker, feel free to che
 
 ### Computational constraints
 
-The total running time of your script on 100 test challenges shall not pass the 4 hours on a standard github action VM: 10% exceptions are tolerated, more running time will be penalised. The maximum running time for the CI is 6h: beyond that time, the CI will timeout and fail.
+The total running time of your script on 100 test tasks shall not pass the 4 hours on a standard github action VM: 10% exceptions are tolerated, more running time will be penalised. The maximum running time for the CI is 6h: beyond that time, the CI will timeout and fail.
 
 ### Test data
 
