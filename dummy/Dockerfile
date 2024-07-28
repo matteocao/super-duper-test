@@ -1,4 +1,4 @@
-FROM gcr.io/kaggle-images/python:latest
+FROM python:latest
 
 RUN mkdir /data
 
