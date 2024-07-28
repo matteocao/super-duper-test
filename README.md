@@ -36,6 +36,10 @@ The total running time of your script on 100 test tasks shall not pass the 4 hou
 
 What you will see in the CI of your PR will be a good proxy of the score you will get, but it is not the actual test score: the test set is secret and not available to the public. In case your PR is successful, we will run your docker in a sandbox environment for the actual test score.
 
+### Dummy example
+
+Inside the [/dummy](https://github.com/matteocao/super-duper-test/tree/main/dummy) folder you will find a simple python script that generates a random `submission.json` file (that is, of course, unable to generalise to any novel task that may be encountered in the actual test set) and a Dockerfile that is used to build the corresponding docker. [This PR](https://github.com/matteocao/super-duper-test/pull/1) is just an example for your reference: you can check the CI run and see the score (`= 2` in this example case, when run on the provided test, not the real secret one).
+
 ## Evaluation
 
 This competition evaluates submissions on the percentage of correct predictions. For each task, you should predict exactly 2 outputs for every test input grid contained in the task. (Tasks can have more than one test input that needs a predicted output). Each task test output has one ground truth. For a given task output, any of the 2 predicted outputs matches the ground truth exactly, you score 1 for that task test output, otherwise 0. The final score is the sum averaged of the highest score per task output divided by the total number of task test outputs.
