@@ -12,33 +12,33 @@ Your work could contribute to new AI problem-solving applicable across industrie
 
 ## The challenge
 
-The challenge data can bve found is this repo [/data](https://github.com/matteocao/super-duper-test/tree/main/data) folder. The best way to get familiarised with the data and challenge is to look at [this website](https://arc-editor.lab42.global/playground). Simply put, each of the tasks consists of a few demo examples explaining the rule to go from input to output - they are needed by the solver to be able to infer the rule to go from input to output - and a test task, where one validates whether the rule was inferred correctly.
+The challenge data can be found at this repo [/data](https://github.com/matteocao/super-duper-test/tree/main/data) folder. The best way to get familiarised with the data and tasks is to look at [this website](https://arc-editor.lab42.global/playground). Simply put, each one of the tasks consists of a few demo examples explaining the rule to go from input to output - they are needed by the solver to be able to infer the rule to transform the input into the output - and a test task, where one validates whether the rule was inferred correctly.
 
 ### How to participate
 
-In order to participate to the Research team candidate challenge, in a separated repo, prepare your solution code and ship it in a docker. The docker shall be put on [dockerhub](https://hub.docker.com/) - the account on dockerhub for personal use is free - and shall be public. This will make the `docker pull` command work on your image as well. Once you have your docker prepared, you can make a PR to this repo.
+In order to participate to the Research team candidacy challenge, in a separated repo owned by you, prepare your solution code and ship it in a docker. The docker shall be put on [dockerhub](https://hub.docker.com/) - the account on dockerhub for personal use is free - and shall be public. This will make the `docker pull` command work on your image as well. Once you have your docker prepared, you can make a PR to this repo.
 
 ### Make your PR
 
-Once your docker is ready, you need to create a PR to this repo. Fork this repo and make a PR to the `main` branch. Your PR shall only modify the file [docker_image.txt](https://github.com/matteocao/super-duper-test/blob/main/docker_image.txt) and shall put the name of your docker image containing your solver.
+Once your docker image is ready, you need to create a PR to this repo. Fork this repo and make a PR to the `main` branch. Your PR shall only modify the file [docker_image.txt](https://github.com/matteocao/super-duper-test/blob/main/docker_image.txt) and shall put the name of your docker image containing your solver.
 
 Your docker shall have a final instruction `CMD` that runs your script that solves the tasks: the test files are accessible via a volume binding, putting the test files inside the `/data` folder inside your container. Please make sure that you have an empty `/data` folder in your docker and that your script reaches that folder to analyse the data.
 
-For more details on what are the commands that run your docker, feel free to check the [GitHub action script](https://github.com/matteocao/super-duper-test/blob/main/.github/workflows/main.yml).
+For more details on what is the run command that runs your docker, feel free to check the [GitHub action script](https://github.com/matteocao/super-duper-test/blob/main/.github/workflows/main.yml).
 
-Finally, make sure to write a one-pager description of you PR (directly in the PR). This will also be evaluated. Additioanlly, make sure to write high-quality code, with decent docstrings and proper code design: the **code quality** will be analysed manually for the top candidates before they are called for hte final interview.
+Finally, make sure to write a one-pager description of you PR (directly in the PR). This will also be evaluated. Additioanlly, make sure to write **high-quality code**, with decent docstrings and proper code design: the **code quality** will be analysed manually for the top candidates before they are called for hte final interview.
 
 ### Computational constraints
 
-The total running time of your script on 100 test tasks shall not pass the 4 hours on a standard github action VM: 10% exceptions are tolerated, more running time will be penalised. The maximum running time for the CI is 6h: beyond that time, the CI will timeout and fail.
+The total running time of your script on 100 test tasks shall not pass the 4 hours on a standard github action VM: 10% exceptions are tolerated, longer running times will be penalised. The maximum running time for the CI is 6h: beyond that time, the CI will timeout and fail.
 
 ### Test data
 
-What you will see in the CI of your PR will be a good proxy of the score you will get, but it is not the actual test score: the test set is secret and not available to the public. In case your PR is successful, we will run your docker in a sandbox environment for the actual test score.
+What you will see in the Evaluation step of the CI of your PR will be a good proxy of the score you will get, but it is not the actual test score: the test set is secret and not available to the public. In case your PR is successful, we may run your docker in a sandbox environment for the actual test score. Note that simply copy-pasting the solutions of the [test tasks](https://github.com/matteocao/super-duper-test/blob/main/data/arc-agi_test_challenges.json) taken from the training and evaluation solution files is pointless: this will certainly score 0 in the actual test and does not contain any relevant logic.
 
 ### Dummy example
 
-Inside the [/dummy](https://github.com/matteocao/super-duper-test/tree/main/dummy) folder you will find a simple python script that generates a random `submission.json` file (that is, of course, unable to generalise to any novel task that may be encountered in the actual test set) and a Dockerfile that is used to build the corresponding docker. [This PR](https://github.com/matteocao/super-duper-test/pull/1) is just an example for your reference: you can check the CI run and see the score (`= 2` in this example case, when run on the provided test, not the real secret one).
+Inside the [/dummy](https://github.com/matteocao/super-duper-test/tree/main/dummy) folder you will find a simple python script `main.py` that generates a random `submission.json` file (that is, of course, unable to generalise to any novel task that may be encountered in the actual test set and has no logic) and a `Dockerfile` that is used to build the corresponding docker. [This PR](https://github.com/matteocao/super-duper-test/pull/1) is just an example for your reference: you can check the CI run and see the score (`= 2` in this example case, when run on the provided test, not the real secret one).
 
 ## Evaluation
 
