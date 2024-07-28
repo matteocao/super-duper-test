@@ -22,7 +22,7 @@ jobs:
     - name: Run Docker container
       run: |
         docker run -v ${{ github.workspace }}/data:/data ${{ env.IMAGE_NAME }} || exit 1
-        ls /data -a
+        ls ./data -a
 
     - name: Run Evaluation script
       run: |
