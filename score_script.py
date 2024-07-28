@@ -20,7 +20,7 @@ assert find_file(directory_path=directory_path, file_name=file_name), "The submi
 solution_dict = {}
 with open(os.path.join(os.getcwd(), directory_path, training_sols),"r") as f:
     solution_dict = json.load(f)
-with open(os.path.join(os.getcwd(), directory_path, evaluation_sols),"r") as f:
+with open(os.path.join(os.getcwd(), directory_path, evaluations_sols),"r") as f:
     solution_dict = solution_dict | json.load(f)
 
 assert len(solution_dict) == 800, "something of when loading solution files"
