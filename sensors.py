@@ -3,7 +3,7 @@
 import json
 import os
 from typing import Tuple, List, Dict
-from ..grid import Grid
+from grid import Grid
 
 
 class TaskSinglePair:
