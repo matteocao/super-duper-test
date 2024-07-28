@@ -1,11 +1,9 @@
 import json
 import os
-from sensors import Sensors, FullExample
-
-# Get the directory where the script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Build the path to the JSON file
+training_sols = "arc-agi_training_solutions.json"
+evaluations_sols = "arc-agi_evaluation_solutions.json"
 file_name = "submission.json"
 directory_path = "data"
 
@@ -15,40 +13,38 @@ def find_file(directory_path, file_name):
     full_path = os.path.join(os.getcwd(), directory_path, file_name)
     return os.path.isfile(full_path)
 
-# test find_file
-file_name_example = "1f876c06" + ".json"
-print(file_name_example)
-print(find_file(directory_path=directory_path, file_name=file_name_example))
+# test submission.json is present
+assert find_file(directory_path=directory_path, file_name=file_name), "The submission.json file has not been found"
 
-# TODO: convert kaggle format to single filess
+# open solution files and store in dict
+solution_dict = {}
+with open(os.path.join(os.getcwd(), directory_path, training_sols),"r") as f:
+    solution_dict = json.load(f)
+with open(os.path.join(os.getcwd(), directory_path, evaluation_sols),"r") as f:
+    solution_dict = solution_dict | json.load(f)
 
-# start sensors
-sensor_train = Sensors(os.path.join("data", "training"))
-sensor_eval = Sensors(os.path.join("data", "evaluation"))
-sensor_test = Sensors(os.path.join("test_data", "evaluation"))
-sensors = [sensor_train, sensor_eval, sensor_test]
+assert len(solution_dict) == 800, "something of when loading solution files"
 
-
-def score(file_name):
-    file = open(file_name, "r")
-    data = json.load(file)
+# score function
+def score():
+    """scoring function of the submitted solution"""
+    data = {}
+    with open(os.path.join(os.getcwd(), directory_path, file_name), "r") as file:
+        data = json.load(file)  # proposed solutions
     attempted, score = 0, 0
-    for task_name in data:
-        file_name = task_name + ".json"
-        for i, directory_path in enumerate(directories):
-            if find_file(directory_path, file_name):
-                attempted += 1
-                local_score = 0
-                examples, _ = sensors[i].load_single_task(task_name)
-                full_example: FullExample = examples[0]
-                for j, pair in enumerate(full_example.test):
-                    grid_expected = pair.output.to_list()
-                    if (data[task_name][j]["attempt_1"] == grid_expected) or (
-                        data[task_name][j]["attempt_2"] == grid_expected
-                    ):
-                        local_score += 1
-                score += local_score / len(full_example.test)
+    for task_name, attempts in data.items():
+        attempted += 1
+        local_score = 0
+        for j, pair_of_attempts in enumerate(attempts):
+            try:
+                grid_expected = solution_dict[task_name][j]
+            except KeyError:
+                print(f"the filename {task_name} does not exist among the training and evaluation tasks: this is a bug")
+            if (data[task_name][j]["attempt_1"] == grid_expected) or (
+                data[task_name][j]["attempt_2"] == grid_expected
+            ):
+            local_score += 1
+        score += local_score / len(solution_dict[task_name])
     return attempted, score, score / attempted
 
-
-print(score(file_name))
+print("This is the total score:", score())
