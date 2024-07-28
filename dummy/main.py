@@ -26,6 +26,6 @@ def build_dummy_sub_file(test_path):
                 ]
                 })
 
-    with open('submission.json', 'w') as file:
+    with open('/data/submission.json', 'w') as file:
         json.dump(sub_dict, file, indent=4)
     return sub_dict
