@@ -1,1 +1,1 @@
-matteocao/dummy-image
+python:3.9.19-slim-bullseye
