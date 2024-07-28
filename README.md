@@ -20,7 +20,7 @@ In order to participate to the Research team candidate challenge, in a separated
 
 ### Make your PR
 
-Once your docker is ready, you need to create a PR to this repo. Your PR shall only modify the file [docker_image.txt](https://github.com/matteocao/super-duper-test/blob/main/docker_image.txt) and shall put the name of your docker image containing your solver.
+Once your docker is ready, you need to create a PR to this repo. Fork this repo and make a PR to the `main` branch. Your PR shall only modify the file [docker_image.txt](https://github.com/matteocao/super-duper-test/blob/main/docker_image.txt) and shall put the name of your docker image containing your solver.
 
 Your docker shall have a final instruction `CMD` that runs your script that solves the tasks: the test files are accessible via a volume binding, putting the test files inside the `/data` folder inside your container. Please make sure that you have an empty `/data` folder in your docker and that your script reaches that folder to analyse the data.
 
