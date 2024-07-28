@@ -29,3 +29,8 @@ def build_dummy_sub_file(test_path):
     with open('/data/submission.json', 'w') as file:
         json.dump(sub_dict, file, indent=4)
     return sub_dict
+
+if __name__ == "__main__":
+    print("Script started")
+    build_dummy_sub_file(test_path)
+    print("Script finished")
