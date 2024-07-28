@@ -43,7 +43,7 @@ def score():
             if (data[task_name][j]["attempt_1"] == grid_expected) or (
                 data[task_name][j]["attempt_2"] == grid_expected
             ):
-            local_score += 1
+                local_score += 1
         score += local_score / len(solution_dict[task_name])
     return attempted, score, score / attempted
 
