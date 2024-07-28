@@ -25,4 +25,6 @@ jobs:
         ls /data -a
 
     - name: Run Evaluation script
-      run: python3 score_script.py
+      run: |
+        pip install plotly
+        python3 score_script.py
