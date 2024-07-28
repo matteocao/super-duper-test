@@ -26,5 +26,5 @@ jobs:
 
     - name: Run Evaluation script
       run: |
-        pip install plotly
+        pip install plotly numpy
         python3 score_script.py

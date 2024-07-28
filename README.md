@@ -26,6 +26,8 @@ Your docker shall have a final instruction `CMD` that runs your script that solv
 
 For more details on what are the commands that run your docker, feel free to check the [GitHub action script](https://github.com/matteocao/super-duper-test/blob/main/.github/workflows/main.yml).
 
+Finally, make sure to write a one-pager description of you PR (directly in the PR). This will also be evaluated. Additioanlly, make sure to write high-quality code, with decent docstrings and proper code design: the **code quality** will be analysed manually for the top candidates before they are called for hte final interview.
+
 ### Computational constraints
 
 The total running time of your script on 100 test tasks shall not pass the 4 hours on a standard github action VM: 10% exceptions are tolerated, more running time will be penalised. The maximum running time for the CI is 6h: beyond that time, the CI will timeout and fail.
