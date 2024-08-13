@@ -1,1 +1,1 @@
-python:3.9.19-slim-bullseye
+omranamayreh/arc-dino:1.0
